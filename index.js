@@ -15,7 +15,7 @@ const getTodoSync = (id) => {
     todos.push(JSON.parse(todo));
   }
   const todo = todos.find(item => item.id === id);
-  return todo;
+  return JSON.stringify(todo);
 };
 
 const createTodoSync = (todo) => {
@@ -63,7 +63,6 @@ const deleteTodoSync = (id) => {
     fs.appendFileSync("db.txt",  JSON.stringify(todos[i],null,2) + "\n");
   }
 };
-
 
 module.exports = {
   getTodosSync,
