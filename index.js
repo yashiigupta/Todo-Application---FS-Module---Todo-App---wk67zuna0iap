@@ -41,6 +41,7 @@ const updateTodoSync = (id, updates) => {
   var todo = todos.find(item => item.id === id);
   todo = Object.assign(todo, updates);
   todo.updatedAt = new Date().toISOString();
+  todo.isCompleted = true;
   fs.writeFileSync("db.txt", "");
   for(let i = 0; i < todos.length; i++) {
     fs.appendFileSync("db.txt",  JSON.stringify(todos[i],null,2) + "\n");
@@ -62,8 +63,6 @@ const deleteTodoSync = (id) => {
     fs.appendFileSync("db.txt",  JSON.stringify(todos[i],null,2) + "\n");
   }
 };
-
-deleteTodoSync(1734245506267);
 
 
 module.exports = {
